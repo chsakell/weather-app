@@ -1,0 +1,47 @@
+<div class="panel panel-primary weather-panel" [@flyInOut]="'in'">
+    <div class="panel-heading">
+        <h3 class="panel-title">Weather for {{weather.name}}</h3>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-striped">
+            <tr *ngFor="let item of weather.weather">
+                <td>
+                    {{item.description | uppercase}}
+                </td>
+                <td>
+                    <img class="img-responsive center-block" src="http://openweathermap.org/img/w/{{item.icon}}.png" />
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    Temperature
+                </td>
+                <td>
+                    {{weather.main.temp -273.15 | number : '1.2-2'}} (°C)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Wind speed
+                </td>
+                <td>
+                    {{weather.wind.speed}} meter/sec
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Wind direction
+                </td>
+                <td>
+                    {{weather.wind.deg}} degrees
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel-footer panel-danger remove-weather">
+        <button class="btn btn-sm btn-danger pull-right" (click)="remove()">Remove</button>
+    </div>
+</div>

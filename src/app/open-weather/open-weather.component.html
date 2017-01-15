@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-lg-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for..." [(ngModel)]="city" 
+            name="city" id="city" required>
+            <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="search()" [disabled]="city === '' || !city">Search</button>
+      </span>
+        </div>
+    </div>
+</div>
+<br/><br/>
+<div class="row">
+    <div *ngIf="weatherList" class="row">
+        <div class="col-sm-4" *ngFor="let weatherItem of weatherList">
+            <weather-widget [weather]="weatherItem" (removeWidget)="removeWidget($event);"></weather-widget>
+        </div>
+    </div>
